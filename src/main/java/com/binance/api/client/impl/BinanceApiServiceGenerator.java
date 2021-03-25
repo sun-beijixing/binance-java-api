@@ -25,14 +25,20 @@ public class BinanceApiServiceGenerator {
 
     private static final OkHttpClient sharedClient;
     private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
+//    private static Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 10809));
 
     static {
         Dispatcher dispatcher = new Dispatcher();
         dispatcher.setMaxRequestsPerHost(500);
         dispatcher.setMaxRequests(500);
         sharedClient = new OkHttpClient.Builder()
+//                .proxy(proxy)
                 .dispatcher(dispatcher)
-                .pingInterval(20, TimeUnit.SECONDS)
+                .pingInterval(10, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .callTimeout( 30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
                 .build();
     }
 
