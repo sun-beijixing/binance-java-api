@@ -232,44 +232,4 @@ public interface BinanceApiRestClient {
   
   List<Trade> getMyTrades(String symbol, Long fromId);
 
-  /**
-   * Submit a withdraw request.
-   *
-   * Enable Withdrawals option has to be active in the API settings.
-   *
-   * @param asset asset symbol to withdraw
-   * @param address address to withdraw to
-   * @param amount amount to withdraw
-   * @param name description/alias of the address
-   * @param addressTag Secondary address identifier for coins like XRP,XMR etc.
-   */
-  WithdrawResult withdraw(String asset, String address, String amount, String name, String addressTag);
-
-  /**
-   * Fetch account deposit history.
-   *
-   * @return deposit history, containing a list of deposits
-   */
-  DepositHistory getDepositHistory(String asset);
-
-  /**
-   * Fetch account withdraw history.
-   *
-   * @return withdraw history, containing a list of withdrawals
-   */
-  WithdrawHistory getWithdrawHistory(String asset);
-
-  /**
-   * Fetch sub-account transfer history.
-   *
-   * @return sub-account transfers
-   */
-  List<SubAccountTransfer> getSubAccountTransfers();
-
-  /**
-   * Fetch deposit address.
-   *
-   * @return deposit address for a given asset.
-   */
-  DepositAddress getDepositAddress(String asset);
 }

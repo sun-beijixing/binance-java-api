@@ -201,33 +201,4 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 				System.currentTimeMillis());
 	}
 
-	@Override
-	public WithdrawResult withdraw(String asset, String address, String amount, String name, String addressTag) {
-		return executeSync(binanceApiService.withdraw(asset, address, amount, name, addressTag,
-				BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
-	}
-
-	@Override
-	public DepositHistory getDepositHistory(String asset) {
-		return executeSync(binanceApiService.getDepositHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-				System.currentTimeMillis()));
-	}
-
-	@Override
-	public WithdrawHistory getWithdrawHistory(String asset) {
-		return executeSync(binanceApiService.getWithdrawHistory(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-				System.currentTimeMillis()));
-	}
-
-	@Override
-	public List<SubAccountTransfer> getSubAccountTransfers() {
-		return executeSync(binanceApiService.getSubAccountTransfers(System.currentTimeMillis()));
-	}
-
-	@Override
-	public DepositAddress getDepositAddress(String asset) {
-		return executeSync(binanceApiService.getDepositAddress(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
-				System.currentTimeMillis()));
-	}
-
 }
