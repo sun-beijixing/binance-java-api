@@ -286,29 +286,4 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response and returns the deposit address
    */
    void getDepositAddress(String asset, BinanceApiCallback<DepositAddress> callback);
-
-  // User stream endpoints
-
-  /**
-   * Start a new user data stream.
-   *
-   * @param callback the callback that handles the response which contains a listenKey
-   */
-  void startUserDataStream(BinanceApiCallback<ListenKey> callback);
-
-  /**
-   * PING a user data stream to prevent a time out.
-   *
-   * @param listenKey listen key that identifies a data stream
-   * @param callback the callback that handles the response which contains a listenKey
-   */
-  void keepAliveUserDataStream(String listenKey, BinanceApiCallback<Void> callback);
-
-  /**
-   * Close out a new user data stream.
-   *
-   * @param listenKey listen key that identifies a data stream
-   * @param callback the callback that handles the response which contains a listenKey
-   */
-  void closeUserDataStream(String listenKey, BinanceApiCallback<Void> callback);
 }

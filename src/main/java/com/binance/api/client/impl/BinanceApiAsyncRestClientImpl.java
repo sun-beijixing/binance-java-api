@@ -232,20 +232,4 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
         .enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
 
-  // User stream endpoints
-
-  @Override
-  public void startUserDataStream(BinanceApiCallback<ListenKey> callback) {
-    binanceApiService.startUserDataStream().enqueue(new BinanceApiCallbackAdapter<>(callback));
-  }
-
-  @Override
-  public void keepAliveUserDataStream(String listenKey, BinanceApiCallback<Void> callback) {
-    binanceApiService.keepAliveUserDataStream(listenKey).enqueue(new BinanceApiCallbackAdapter<>(callback));
-  }
-
-  @Override
-  public void closeUserDataStream(String listenKey, BinanceApiCallback<Void> callback) {
-    binanceApiService.closeAliveUserDataStream(listenKey).enqueue(new BinanceApiCallbackAdapter<>(callback));
-  }
 }
