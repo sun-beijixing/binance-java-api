@@ -53,11 +53,6 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 	// Market Data endpoints
 
 	@Override
-	public OrderBook getOrderBook(String symbol, Integer limit) {
-		return executeSync(binanceApiService.getOrderBook(symbol, limit));
-	}
-
-	@Override
 	public List<TradeHistoryItem> getTrades(String symbol, Integer limit) {
 		return executeSync(binanceApiService.getTrades(symbol, limit));
 	}
@@ -107,11 +102,6 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 	@Override
 	public List<TickerPrice> getAllPrices() {
 		return executeSync(binanceApiService.getLatestPrices());
-	}
-
-	@Override
-	public List<BookTicker> getBookTickers() {
-		return executeSync(binanceApiService.getBookTickers());
 	}
 
 	@Override

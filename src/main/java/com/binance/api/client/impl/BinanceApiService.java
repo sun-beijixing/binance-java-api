@@ -41,9 +41,9 @@ public interface BinanceApiService {
 
     // Market data endpoints
 
-    //深度信息
-    @GET("/api/v3/depth")
-    Call<OrderBook> getOrderBook(@Query("symbol") String symbol, @Query("limit") Integer limit);
+//    //深度信息
+//    @GET("/api/v3/depth")
+//    Call<OrderBook> getOrderBook(@Query("symbol") String symbol, @Query("limit") Integer limit);
 
     //近期成交列表
     @GET("/api/v3/trades")
@@ -83,8 +83,8 @@ public interface BinanceApiService {
 
     //当前最优挂单
 //    @GET("/api/v1/ticker/allBookTickers")
-    @GET("/api/v3/ticker/bookTicker")
-    Call<List<BookTicker>> getBookTickers();
+//    @GET("/api/v3/ticker/bookTicker")
+//    Call<List<BookTicker>> getBookTickers();
 
     // Account endpoints
 

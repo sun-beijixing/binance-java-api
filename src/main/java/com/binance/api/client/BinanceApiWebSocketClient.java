@@ -57,23 +57,6 @@ public interface BinanceApiWebSocketClient extends Closeable {
     Closeable onAllMarketTickersEvent(BinanceApiCallback<List<TickerEvent>> callback);
 
     /**
-     * Open a new web socket to receive {@link BookTickerEvent bookTickerEvents} on a callback.
-     *
-     * @param symbols  market (one or coma-separated) symbol(s) to subscribe to
-     * @param callback the callback to call on new events
-     * @return a {@link Closeable} that allows the underlying web socket to be closed.
-     */
-    Closeable onBookTickerEvent(String symbols, BinanceApiCallback<BookTickerEvent> callback);
-
-    /**
-     * Open a new web socket to receive {@link TickerEvent allBookTickersEvents} on a callback.
-     *
-     * @param callback the callback to call on new events
-     * @return a {@link Closeable} that allows the underlying web socket to be closed.
-     */
-    Closeable onAllBookTickersEvent(BinanceApiCallback<BookTickerEvent> callback);
-
-    /**
      * @deprecated This method is no longer functional. Please use the returned {@link Closeable} from any of the other methods to close the web socket.
      */
     @Deprecated

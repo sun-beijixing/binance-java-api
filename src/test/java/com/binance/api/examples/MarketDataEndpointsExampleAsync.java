@@ -2,13 +2,7 @@ package com.binance.api.examples;
 
 import com.binance.api.client.BinanceApiAsyncRestClient;
 import com.binance.api.client.BinanceApiClientFactory;
-import com.binance.api.client.domain.market.AggTrade;
-import com.binance.api.client.domain.market.Candlestick;
-import com.binance.api.client.domain.market.CandlestickInterval;
-import com.binance.api.client.domain.market.OrderBook;
-import com.binance.api.client.domain.market.TickerPrice;
-import com.binance.api.client.domain.market.TickerStatistics;
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.domain.market.*;
 
 import java.util.List;
 
@@ -20,11 +14,6 @@ public class MarketDataEndpointsExampleAsync {
   public static void main(String[] args) {
     BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
     BinanceApiAsyncRestClient client = factory.newAsyncRestClient();
-
-    // Getting depth of a symbol (async)
-    client.getOrderBook("NEOETH", 10, (OrderBook response) -> {
-      System.out.println(response.getBids());
-    });
 
     // Getting latest price of a symbol (async)
     client.get24HrPriceStatistics("NEOETH", (TickerStatistics response) -> {
@@ -43,15 +32,5 @@ public class MarketDataEndpointsExampleAsync {
     client.getCandlestickBars("NEOETH", CandlestickInterval.WEEKLY,
         (List<Candlestick> response) -> System.out.println(response));
 
-    // Book tickers (async)
-    client.getBookTickers(response -> System.out.println(response));
-
-    // Exception handling
-    try {
-      client.getOrderBook("UNKNOWN", 10, response -> System.out.println(response));
-    } catch (BinanceApiException e) {
-      System.out.println(e.getError().getCode()); // -1121
-      System.out.println(e.getError().getMsg());  // Invalid symbol
-    }
   }
 }

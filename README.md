@@ -61,13 +61,6 @@ System.out.println(serverTime);
 
 ### Market Data endpoints
 
-#### Order book of a symbol
-```java
-OrderBook orderBook = client.getOrderBook("NEOETH", 10);
-List<OrderBookEntry> asks = orderBook.getAsks();
-OrderBookEntry firstAskEntry = asks.get(0);
-System.out.println(firstAskEntry.getPrice() + " / " + firstAskEntry.getQty());
-```
 <details>
  <summary>View Response</summary>
  
@@ -344,32 +337,6 @@ client.onDepthEvent("ethbtc", (DepthEvent response) -> {
   System.out.println(response.getAsks());
 });
 ```
-<details>
- <summary>View Response</summary>
- 
- ```java
-[OrderBookEntry[price=0.05559500,qty=7.94200000], OrderBookEntry[price=0.05559800,qty=0.00000000]]
-[OrderBookEntry[price=0.05558400,qty=30.61800000], OrderBookEntry[price=0.05559500,qty=0.00000000], OrderBookEntry[price=0.05560600,qty=8.32100000]]
-[OrderBookEntry[price=0.05559100,qty=7.86600000], OrderBookEntry[price=0.05560600,qty=0.00000000], OrderBookEntry[price=0.05607700,qty=5.15500000], OrderBookEntry[price=0.05620700,qty=0.00000000], OrderBookEntry[price=0.05842200,qty=0.00000000]]
-[OrderBookEntry[price=0.05558400,qty=29.61700000]]
-...
-```
-</details>
-
-#### Get 1m candlesticks in real-time for ETH/BTC
-```java
-client.onCandlestickEvent("ethbtc", CandlestickInterval.ONE_MINUTE, response -> System.out.println(response));
-```
-<details>
- <summary>View Response</summary>
- 
- ```java
-CandlestickEvent[eventType=kline,eventTime=1508417055113,symbol=ETHBTC,openTime=1508417040000,open=0.05376300,high=0.05376300,low=0.05372900,close=0.05372900,volume=0.49400000,closeTime=1508417099999,intervalId=1m,firstTradeId=2199019,lastTradeId=2199020,quoteAssetVolume=0.02654552,numberOfTrades=2,takerBuyBaseAssetVolume=0.00000000,takerBuyQuoteAssetVolume=0.00000000,isBarFinal=false]
-CandlestickEvent[eventType=kline,eventTime=1508417055145,symbol=ETHBTC,openTime=1508417040000,open=0.05376300,high=0.05376300,low=0.05371700,close=0.05371700,volume=0.62900000,closeTime=1508417099999,intervalId=1m,firstTradeId=2199019,lastTradeId=2199021,quoteAssetVolume=0.03379731,numberOfTrades=3,takerBuyBaseAssetVolume=0.00000000,takerBuyQuoteAssetVolume=0.00000000,isBarFinal=false]
-CandlestickEvent[eventType=kline,eventTime=1508417096085,symbol=ETHBTC,openTime=1508417040000,open=0.05376300,high=0.05376300,low=0.05370900,close=0.05370900,volume=0.68000000,closeTime=1508417099999,intervalId=1m,firstTradeId=2199019,lastTradeId=2199022,quoteAssetVolume=0.03653646,numberOfTrades=4,takerBuyBaseAssetVolume=0.00000000,takerBuyQuoteAssetVolume=0.00000000,isBarFinal=false]
-...
-```
-</details>
 
 #### Keep a local depth cache for a symbol
 

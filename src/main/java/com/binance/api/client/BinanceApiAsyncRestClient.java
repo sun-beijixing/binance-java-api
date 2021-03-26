@@ -1,31 +1,11 @@
 package com.binance.api.client;
 
-import com.binance.api.client.domain.account.Account;
-import com.binance.api.client.domain.account.DepositAddress;
-import com.binance.api.client.domain.account.DepositHistory;
-import com.binance.api.client.domain.account.NewOrder;
-import com.binance.api.client.domain.account.NewOrderResponse;
-import com.binance.api.client.domain.account.Order;
-import com.binance.api.client.domain.account.Trade;
-import com.binance.api.client.domain.account.TradeHistoryItem;
-import com.binance.api.client.domain.account.WithdrawHistory;
-import com.binance.api.client.domain.account.WithdrawResult;
-import com.binance.api.client.domain.account.request.AllOrdersRequest;
-import com.binance.api.client.domain.account.request.CancelOrderRequest;
-import com.binance.api.client.domain.account.request.CancelOrderResponse;
-import com.binance.api.client.domain.account.request.OrderRequest;
-import com.binance.api.client.domain.account.request.OrderStatusRequest;
-import com.binance.api.client.domain.event.ListenKey;
+import com.binance.api.client.domain.account.*;
+import com.binance.api.client.domain.account.request.*;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.ServerTime;
-import com.binance.api.client.domain.market.AggTrade;
-import com.binance.api.client.domain.market.BookTicker;
-import com.binance.api.client.domain.market.Candlestick;
-import com.binance.api.client.domain.market.CandlestickInterval;
-import com.binance.api.client.domain.market.OrderBook;
-import com.binance.api.client.domain.market.TickerPrice;
-import com.binance.api.client.domain.market.TickerStatistics;
+import com.binance.api.client.domain.market.*;
 
 import java.util.List;
 
@@ -57,15 +37,6 @@ public interface BinanceApiAsyncRestClient {
   void getAllAssets(BinanceApiCallback<List<Asset>> callback);
 
   // Market Data endpoints
-
-  /**
-   * Get order book of a symbol (asynchronous)
-   *
-   * @param symbol ticker symbol (e.g. ETHBTC)
-   * @param limit depth of the order book (max 100)
-   * @param callback the callback that handles the response
-   */
-  void getOrderBook(String symbol, Integer limit, BinanceApiCallback<OrderBook> callback);
 
   /**
    * Get recent trades (up to last 500). Weight: 1
@@ -164,9 +135,6 @@ public interface BinanceApiAsyncRestClient {
    *
    * @param callback the callback that handles the response
    */
-  void getBookTickers(BinanceApiCallback<List<BookTicker>> callback);
-
-  // Account endpoints
 
   /**
    * Send in a new order (asynchronous)
