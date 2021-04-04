@@ -5,6 +5,7 @@ import com.binance.api.client.domain.account.request.*;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.market.*;
+import com.binance.api.client.domain.snapshot.AccountSnapshot;
 
 import java.util.List;
 
@@ -208,5 +209,9 @@ public interface BinanceApiRestClient {
   List<Trade> getMyTrades(String symbol);
   
   List<Trade> getMyTrades(String symbol, Long fromId);
+
+  AccountSnapshot getAccountSnapshot(String type, Long startTime, Long endTime, Integer limit, Long recvWindow, Long timestamp);
+
+  AccountSnapshot getAccountSnapshot(String type);
 
 }

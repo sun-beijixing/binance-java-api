@@ -8,6 +8,7 @@ import com.binance.api.client.domain.account.request.*;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.market.*;
+import com.binance.api.client.domain.snapshot.AccountSnapshot;
 import retrofit2.Call;
 
 import java.util.List;
@@ -190,5 +191,15 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
 		return getMyTrades(symbol, null, fromId, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
 				System.currentTimeMillis());
 	}
+
+    @Override
+    public AccountSnapshot getAccountSnapshot(String type, Long startTime, Long endTime, Integer limit, Long recvWindow, Long timestamp) {
+        return executeSync(binanceApiService.getAccountSnapshot(type, startTime, endTime, limit, recvWindow, timestamp));
+    }
+
+    @Override
+    public AccountSnapshot getAccountSnapshot(String type) {
+        return executeSync(binanceApiService.getAccountSnapshot(type, null, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+    }
 
 }

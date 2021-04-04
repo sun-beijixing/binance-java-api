@@ -12,6 +12,7 @@ import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.ServerTime;
 import com.binance.api.client.domain.market.*;
+import com.binance.api.client.domain.snapshot.AccountSnapshot;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -150,5 +151,11 @@ public interface BinanceApiService {
     @GET("/api/v3/myTrades")
     Call<List<Trade>> getMyTrades(@Query("symbol") String symbol, @Query("limit") Integer limit, @Query("fromId") Long fromId,
                                   @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+    //查询每日资产快照 (USER_DATA)
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/sapi/v1/accountSnapshot")
+    Call<AccountSnapshot> getAccountSnapshot(@Query("type") String type, @Query("startTime") Long startTime, @Query("endTime") Long endTime,
+                                                   @Query("limit") Integer limit, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
 }

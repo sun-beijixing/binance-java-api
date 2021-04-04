@@ -4,6 +4,7 @@ import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiRestClient;
 import com.binance.api.client.domain.account.Account;
 import com.binance.api.client.domain.account.Trade;
+import com.binance.api.client.domain.snapshot.AccountSnapshot;
 
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class AccountEndpointsExample {
     // Get list of trades
     List<Trade> myTrades = client.getMyTrades("NEOETH");
     System.out.println(myTrades);
+
+    // Get account snapshots（"SPOT", "MARGIN", "FUTURES"）
+    AccountSnapshot myAccountSnapshot = client.getAccountSnapshot("SPOT");
+    System.out.println(myAccountSnapshot);
 
   }
 }
