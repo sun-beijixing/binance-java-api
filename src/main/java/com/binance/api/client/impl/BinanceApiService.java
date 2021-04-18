@@ -161,7 +161,7 @@ public interface BinanceApiService {
 
     //小额资产转换 (USER_DATA)
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
-    @GET("/sapi/v1/asset/dust")
+    @POST("/sapi/v1/asset/dust")
     Call<DustAsset> dustAssetTransformation(@Query("asset") String[] asset, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
 }
