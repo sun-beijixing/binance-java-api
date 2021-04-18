@@ -9,7 +9,9 @@ import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.market.*;
 import com.binance.api.client.domain.snapshot.AccountSnapshot;
+import com.binance.api.client.domain.snapshot.DustAsset;
 import retrofit2.Call;
+import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -200,6 +202,16 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
     @Override
     public AccountSnapshot getAccountSnapshot(String type) {
         return executeSync(binanceApiService.getAccountSnapshot(type, null, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
+    }
+
+    @Override
+    public DustAsset dustAssetTransformation(String[] asset, Long recvWindow, Long timestamp) {
+        return executeSync(binanceApiService.dustAssetTransformation(asset, recvWindow, timestamp));
+    }
+
+    @Override
+    public DustAsset dustAssetTransformation(String[] asset) {
+        return executeSync(binanceApiService.dustAssetTransformation(asset, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis()));
     }
 
 }

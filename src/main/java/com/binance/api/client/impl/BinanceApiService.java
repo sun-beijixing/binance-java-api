@@ -13,6 +13,7 @@ import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.ServerTime;
 import com.binance.api.client.domain.market.*;
 import com.binance.api.client.domain.snapshot.AccountSnapshot;
+import com.binance.api.client.domain.snapshot.DustAsset;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -156,6 +157,11 @@ public interface BinanceApiService {
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @GET("/sapi/v1/accountSnapshot")
     Call<AccountSnapshot> getAccountSnapshot(@Query("type") String type, @Query("startTime") Long startTime, @Query("endTime") Long endTime,
-                                                   @Query("limit") Integer limit, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+                                             @Query("limit") Integer limit, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+    //小额资产转换 (USER_DATA)
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/sapi/v1/asset/dust")
+    Call<DustAsset> dustAssetTransformation(@Query("asset") String[] asset, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
 }

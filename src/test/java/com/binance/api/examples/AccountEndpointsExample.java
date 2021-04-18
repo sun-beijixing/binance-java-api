@@ -5,6 +5,7 @@ import com.binance.api.client.BinanceApiRestClient;
 import com.binance.api.client.domain.account.Account;
 import com.binance.api.client.domain.account.Trade;
 import com.binance.api.client.domain.snapshot.AccountSnapshot;
+import com.binance.api.client.domain.snapshot.DustAsset;
 
 import java.util.List;
 
@@ -13,22 +14,27 @@ import java.util.List;
  */
 public class AccountEndpointsExample {
 
-  public static void main(String[] args) {
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
-    BinanceApiRestClient client = factory.newRestClient();
+    public static void main(String[] args) {
+        BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
+        BinanceApiRestClient client = factory.newRestClient();
 
-    // Get account balances
-    Account account = client.getAccount(60_000L, System.currentTimeMillis());
-    System.out.println(account.getBalances());
-    System.out.println(account.getAssetBalance("ETH"));
+        // Get account balances
+        Account account = client.getAccount(60_000L, System.currentTimeMillis());
+        System.out.println(account.getBalances());
+        System.out.println(account.getAssetBalance("ETH"));
 
-    // Get list of trades
-    List<Trade> myTrades = client.getMyTrades("NEOETH");
-    System.out.println(myTrades);
+        // Get list of trades
+        List<Trade> myTrades = client.getMyTrades("NEOETH");
+        System.out.println(myTrades);
 
-    // Get account snapshots（"SPOT", "MARGIN", "FUTURES"）
-    AccountSnapshot myAccountSnapshot = client.getAccountSnapshot("SPOT");
-    System.out.println(myAccountSnapshot);
+        // Get account snapshots（"SPOT", "MARGIN", "FUTURES"）
+        AccountSnapshot myAccountSnapshot = client.getAccountSnapshot("SPOT");
+        System.out.println(myAccountSnapshot);
 
-  }
+        // dust asset transformation
+        String[] ssss = {"XRP", "DOGE"};
+        DustAsset dustAsset = client.dustAssetTransformation(ssss);
+        System.out.println(myAccountSnapshot);
+
+    }
 }

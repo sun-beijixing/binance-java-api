@@ -25,7 +25,7 @@ public class SnapshotVo {
   /**
    * Deposit time.
    */
-  private String updateTime;
+  private Long updateTime;
 
     public SnapshotData getSnapshotData() {
         return snapshotData;
@@ -43,11 +43,11 @@ public class SnapshotVo {
         this.type = type;
     }
 
-    public String getUpdateTime() {
+    public Long getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public void setUpdateTime(Long updateTime) {
         this.updateTime = updateTime;
     }
 
